@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MB Recommendation Widget</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="hero__copy">
+        <p class="eyebrow">medien-bayern.de</p>
+        <h1>Finde Angebote, die zu deinem Medienprofil passen.</h1>
+        <p class="lede">Suche Veranstaltungen, Förderprogramme und Publikationen, abgestimmt auf Persona, Themen und Format.</p>
+        <div class="search">
+          <input id="searchInput" type="search" placeholder="Thema oder Stichwort eingeben" />
+          <button id="searchBtn" aria-label="Suche starten">Suchen</button>
+        </div>
+        <div class="quick-links" aria-label="Schnellfilter">
+          <button class="chip" data-quick="ki">KI</button>
+          <button class="chip" data-quick="startup">Startup</button>
+          <button class="chip" data-quick="journalismus">Journalismus</button>
+          <button class="chip" data-quick="podcast">Podcast</button>
+        </div>
+      </div>
+      <div class="hero__meta">
+        <div class="stat">
+          <p class="stat__label">Persona-Profile</p>
+          <p class="stat__value" id="personaCount">5</p>
+        </div>
+        <div class="stat">
+          <p class="stat__label">Angebote im Feed</p>
+          <p class="stat__value" id="offerCount">–</p>
+        </div>
+        <div class="stat">
+          <p class="stat__label">Aktualität</p>
+          <p class="stat__value">wöchentlich</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="filters" aria-label="Filterleiste">
+      <div class="filter-group">
+        <p class="filter-label">Kategorie</p>
+        <div id="typeFilters" class="chip-group" role="group" aria-label="Kategorien"></div>
+      </div>
+      <div class="filter-group">
+        <p class="filter-label">Persona</p>
+        <div id="personaFilters" class="chip-group" role="group" aria-label="Personas"></div>
+      </div>
+      <div class="filter-group">
+        <p class="filter-label">Zeitraum</p>
+        <div id="timeFilters" class="chip-group" role="group" aria-label="Zeitraum"></div>
+      </div>
+      <div class="filter-group">
+        <p class="filter-label">Format</p>
+        <div id="formatFilters" class="chip-group" role="group" aria-label="Formate"></div>
+      </div>
+      <div class="filter-group">
+        <p class="filter-label">Kosten</p>
+        <div id="costFilters" class="chip-group" role="group" aria-label="Kosten"></div>
+      </div>
+    </section>
+
+    <section class="summary" aria-live="polite">
+      <p><strong id="resultCount">0</strong> Treffer · sortiert nach Relevanz</p>
+      <div class="active-filters" id="activeFilters"></div>
+    </section>
+
+    <section id="results" class="grid" aria-label="Suchergebnisse"></section>
+  </div>
+
+  <aside id="detailDrawer" class="drawer" aria-hidden="true">
+    <div class="drawer__content">
+      <button class="drawer__close" aria-label="Schließen">×</button>
+      <div id="drawerBody"></div>
+    </div>
+  </aside>
+
+  <template id="cardTemplate">
+    <article class="card">
+      <header class="card__header">
+        <span class="badge" data-type=""></span>
+        <span class="source"></span>
+      </header>
+      <h3 class="card__title"></h3>
+      <p class="card__summary"></p>
+      <ul class="meta"></ul>
+      <div class="tags"></div>
+      <button class="cta">Details</button>
+    </article>
+  </template>
+
+  <script src="script.js" type="module"></script>
+</body>
+</html>
